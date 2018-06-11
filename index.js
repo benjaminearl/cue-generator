@@ -2,7 +2,7 @@ const twitchStream = require('twitch-stream');
  
 twitchStream.connect({
     user: 'bnjmnearl',
-    pass: 'oauth:q086jw41g0q3o7k71q489w4r7h5hlv',
+    pass: '####',
     channel: ['#nickmercs'],
     data: onRecieveMessage,
     error: console.log,
