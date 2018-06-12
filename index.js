@@ -7,6 +7,10 @@ var fs = require('fs');
 var ip = require('ip');
 var config = require('./config.json');
 
+if (config.pass === '####') {
+  throw('Add your password to config.json');
+}
+
 var html = fs.readFileSync(path.join(__dirname, 'www/index.html'), 'utf8')
   .replace('localhost', ip.address());
 
