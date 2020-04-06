@@ -36,17 +36,17 @@ twitchStream.connect({
   user: config.user,
   pass: config.pass,
   channel: config.channels,
-  data: onRecieveMessage,
+  data: onReceiveMessage,
   error: console.log,
 });
 
 const repeated = {}; 
 
-function onRecieveMessage(msg){
+function onReceiveMessage(msg){
   const id = msg.message;
-  if (!repeated[id]) {
-    repeated[id] = 0;
-  }
+  // if (!repeated[id]) {
+  //   repeated[id] = 0;
+  // }
 
   repeated[id]++;
 
@@ -55,7 +55,7 @@ function onRecieveMessage(msg){
   
   // A message needs to be repeated at least twice in order
   // to be broadcast:
-  if (repeated[id] < 2) return;
+  // if (repeated[id] < 2) return;
 
   io.clients((error, clients) => {
     if (!clients.length) return;
@@ -65,3 +65,10 @@ function onRecieveMessage(msg){
   });
 
 };
+
+process.on('SIGINT', function () {
+  console.log(`\n\nClosing up, goodbye.`)
+  io.sockets.emit('message', '******* END OF PERFORMANCE *******');
+  server.close();
+  process.exit(0);
+});
