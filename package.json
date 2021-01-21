@@ -13,7 +13,7 @@
     "express": "^4.16.3",
     "ip": "^1.1.5",
     "local-ip": "^2.0.0",
-    "socket.io": "^2.1.1",
+    "socket.io": "^2.4.0",
     "twitch-stream": "^0.3.1"
   }
 }
